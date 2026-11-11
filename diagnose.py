@@ -1,12 +1,4 @@
-"""
-Failure breakdown for a trained landing policy.
 
-    python diagnose.py --model models/best/best_model.zip --algo ppo --difficulty 0.1 --episodes 30
-
-Runs the policy deterministically and, for every episode, checks each condition that rocket_env.py
-requires for success, so we can see exactly which ones fail.  Also prints the vehicle's
-thrust-to-weight numbers from the constants in rocket_env.py / rocket_model.py.
-"""
 import argparse
 
 import numpy as np

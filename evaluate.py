@@ -1,13 +1,4 @@
-"""
-Monte Carlo evaluation + figures (TINTIN-style: compare a classical baseline against the RL policy).
 
-    python evaluate.py                                   # baseline only
-    python evaluate.py --model models/best/best_model.zip --algo ppo --episodes 200
-
-Writes to results/:  summary.json, wind_sweep.png, landing_scatter.png, trajectory.png
-Success (same rule as the environment): soft touchdown (<3 m/s down, <2 m/s sideways, tilt <10 deg),
-stays upright for 1.2 s (<15 deg), lands on the 5 m pad, no hull contact.
-"""
 import argparse
 import json
 import os

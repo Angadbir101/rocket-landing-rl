@@ -1,19 +1,4 @@
-"""
-Kestrel-1: our own 3D rocket model for MuJoCo, generated procedurally (no external assets).
 
-  * ogive nose cone, fuselage with boat-tail and a recessed-nozzle engine bell -> revolved STL meshes
-  * 4 deployable landing legs (struts, braces, foot pads with real collision)
-  * 4 grid fins, painted bands
-  * 2-DoF gimbal: two hinge joints driven by position servos (the engine is a real child body)
-  * exhaust plume = two ellipsoids whose size the environment updates from throttle/altitude
-  * launch-pad scene: sky gradient, checker ground, painted landing pad (5 m radius)
-
-Body frame: origin at the centre of mass, +z along the rocket axis (nose up).
-
-Export for inspection in the MuJoCo viewer:
-    python rocket_model.py --export model_out
-    python -m mujoco.viewer --mjcf=model_out/rocket_lander.xml
-"""
 import argparse
 import os
 import struct

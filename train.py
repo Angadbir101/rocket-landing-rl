@@ -1,15 +1,4 @@
-"""
-Train a landing policy (PPO or SAC) with a TINTIN-style curriculum + domain randomisation.
 
-    python train.py --algo ppo --steps 5000000
-    python train.py --algo sac --steps 1500000 --envs 4
-    tensorboard --logdir logs
-
-Curriculum: training starts at difficulty 0.1 (low start, tiny offsets, no wind) and the environment
-difficulty is raised by 0.1 whenever the rolling success rate over the last 100 episodes reaches
---promote (default 70 %).  Difficulty 1.0 = full deployment envelope (200-300 m, +-35 m offset, 5 m/s wind).
-Every episode also randomises dry mass, fuel, thrust, Isp and drag coefficient.
-"""
 import argparse
 import os
 

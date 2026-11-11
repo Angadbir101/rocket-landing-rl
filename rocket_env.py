@@ -1,17 +1,4 @@
-"""
-RocketLanderEnv: 6-DoF powered-descent landing in MuJoCo (Gymnasium API).
 
-Inspired by TINTIN / RocketGym: full 6-DoF rigid body, variable mass, 2-DoF gimballed engine,
-curriculum over initial conditions, domain randomisation, attitude-aware reward shaping,
-success defined at touchdown.  What is different here:
-  * our own vehicle model (rocket_model.py) with real landing legs and contact physics
-  * pressure-dependent thrust:  F = throttle*T_vac - p_ambient(h)*A_e,  altitude-dependent drag
-  * the gimbal is a real servo-driven joint pair, so the thrust follows the actual engine axis
-  * the episode continues for ~1.2 s after first contact (engine cut) to check the rocket stays up
-
-Action  (3, in [-1, 1]):  [throttle, gimbal tilt toward +x, gimbal tilt toward +y]
-Obs     (19):  position (x, y, height above feet), velocity, rotation matrix (9), body rates, fuel fraction
-"""
 import numpy as np
 import gymnasium as gym
 import mujoco

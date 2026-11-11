@@ -1,12 +1,4 @@
-"""
-Render a landing as an mp4/gif with MuJoCo: wide mission camera + tracking close-up, HUD, flight-path trail.
 
-    python render_video.py --policy baseline --out landing.mp4
-    python render_video.py --policy models/best/best_model.zip --algo ppo --seed 3
-    python render_video.py --policy random --out random.gif
-
-Headless Linux needs:  export MUJOCO_GL=egl   (or osmesa).  On a desktop the default works.
-"""
 import argparse
 import os
 

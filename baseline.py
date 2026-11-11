@@ -1,10 +1,4 @@
-"""
-Classical baseline (the 'PID baseline' role in TINTIN): no learning, same observations as the RL policy.
 
-  * throttle: track a suicide-burn style descent-speed profile  v_des(h) = -(0.85*sqrt(2*a*h) + 0.8)
-  * guidance: lateral position/velocity error -> desired tilt of the thrust axis (clipped to ~8.5 deg)
-  * gimbal:   PD attitude control on the body up-vector (sign convention matches rocket_env)
-"""
 import numpy as np
 
 GIMBAL_MAX = np.radians(8.0)
@@ -25,10 +19,10 @@ class SuicideBurnPD:
         a_thr = np.clip((v_des - vel[2]) - 0.2, -1.0, 1.0)
 
         des = np.clip(-self.k_pos * pos[:2] - self.k_vel * vel[:2], -self.tmax, self.tmax)
-        e = R[:2, 2] - des                               # world-frame tilt error of the body axis
-        ex = R[0, 0] * e[0] + R[1, 0] * e[1]             # ... expressed along the body x / y axes,
-        ey = R[0, 1] * e[0] + R[1, 1] * e[1]             # because the gimbal axes are body-fixed (yaw is random)
-        alpha = self.kp * ex + self.kd * w[1]            # thrust tilt toward body +x
-        beta = self.kp * ey - self.kd * w[0]             # thrust tilt toward body +y
+        e = R[:2, 2] - des                               
+        ex = R[0, 0] * e[0] + R[1, 0] * e[1]         
+        ey = R[0, 1] * e[0] + R[1, 1] * e[1]            
+        alpha = self.kp * ex + self.kd * w[1]         
+        beta = self.kp * ey - self.kd * w[0]             
         return np.array([a_thr, np.clip(alpha / GIMBAL_MAX, -1, 1), np.clip(beta / GIMBAL_MAX, -1, 1)],
                         dtype=np.float32)
