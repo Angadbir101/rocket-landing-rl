@@ -1,0 +1,27 @@
+﻿.venv/
+__pycache__/
+*.pyc
+logs/
+tensorboard/
+
+# old runs, scratch and backups (root only)
+/models/
+/models_v2/
+/models_v3/
+/models_v4/
+/models_story_old/
+/models_story/ckpts/
+/test_ckpts/
+/test_clips/
+/clips_*/
+/results_story/
+*.bak*
+/patch_*.py
+/check_*.py
+/reward_scale.py
+/seedtest_*.mp4
+/story_s*.mp4
+/test_story.mp4
+/ppo_2m_d01.mp4
+/landing.mp4
+/before_after.mp4
